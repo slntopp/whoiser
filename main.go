@@ -4,6 +4,9 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+
+	"github.com/fatih/structs"
+
 	"github.com/likexian/whois"
 	whoisparser "github.com/likexian/whois-parser"
 )
@@ -44,3 +47,20 @@ func main() {
 	}
 }
 
+func followPath(fields []*structs.Field, path []string) (string, bool) {
+	defer func() {
+        if err := recover(); err != nil {
+            fmt.Println("Path isn't full, panic")
+        }
+    }()
+
+	for _, field := range fields {
+		if field.Name() == path[0] {
+			if len(path) == 1 {
+				return field.Value().(string), false
+			}
+			return followPath(field.Fields(), path[1:])
+		}
+	}
+	return "Not found or Incorrect path", true
+}
