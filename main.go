@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+	"strings"
 
 	"github.com/fatih/structs"
 
@@ -44,6 +45,22 @@ func main() {
 		result_s, _ := json.MarshalIndent(result, "", "  ")
 		fmt.Println(string(result_s))
 		return
+	}
+
+	result_m := structs.New(result)
+	for _, path := range strings.Split(query, ",") {
+		res, err := followPath(result_m.Fields(), strings.Split(path, "/"))
+		if err {
+			fmt.Println("Path " + path + " not found!")
+		}
+
+		if queries {
+			fmt.Print(path + ": ")
+		} else if print_keys {
+			keys := strings.Split(path, "/")
+			fmt.Print(keys[len(keys) - 1] + ": ")
+		} 
+		fmt.Println(res)
 	}
 }
 
