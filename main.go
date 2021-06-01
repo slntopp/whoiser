@@ -1,7 +1,9 @@
 package main
 
 import (
+	"encoding/json"
 	"flag"
+	"fmt"
 	"github.com/likexian/whois"
 	whoisparser "github.com/likexian/whois-parser"
 )
@@ -32,6 +34,12 @@ func main() {
 	}
 	result, err := whoisparser.Parse(result_raw)
 	if err != nil {
+		return
+	}
+
+	if query == "" {
+		result_s, _ := json.MarshalIndent(result, "", "  ")
+		fmt.Println(string(result_s))
 		return
 	}
 }
