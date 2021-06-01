@@ -4,6 +4,9 @@ Quick `whois` lookups.
 
 ## Usage
 
+> Note:
+> Binaries are in Releases
+
 ### Get WHOIS data as JSON
 
 ```shell
