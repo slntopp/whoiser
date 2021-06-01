@@ -2,6 +2,8 @@ package main
 
 import (
 	"flag"
+	"github.com/likexian/whois"
+	whoisparser "github.com/likexian/whois-parser"
 )
 
 func main() {
@@ -21,6 +23,15 @@ func main() {
 
 	if domain == "" {
 		fmt.Println("No domain were given.")
+		return
+	}
+
+	result_raw, err := whois.Whois(domain)
+	if err != nil {
+		return
+	}
+	result, err := whoisparser.Parse(result_raw)
+	if err != nil {
 		return
 	}
 }
