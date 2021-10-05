@@ -1,0 +1,21 @@
+# github.com/fatih/structs v1.1.0
+## explicit
+github.com/fatih/structs
+# github.com/likexian/gokit v0.25.0
+github.com/likexian/gokit/assert
+github.com/likexian/gokit/xslice
+# github.com/likexian/whois v1.12.0
+## explicit
+github.com/likexian/whois
+# github.com/likexian/whois-parser v1.20.3
+## explicit
+github.com/likexian/whois-parser
+# golang.org/x/net v0.0.0-20210510120150-4163338589ed
+golang.org/x/net/idna
+golang.org/x/net/internal/socks
+golang.org/x/net/proxy
+# golang.org/x/text v0.3.6
+golang.org/x/text/secure/bidirule
+golang.org/x/text/transform
+golang.org/x/text/unicode/bidi
+golang.org/x/text/unicode/norm
